@@ -1,0 +1,5 @@
+add_executable(mcell mcell.cpp)
+target_link_libraries(mcell PRIVATE CAF::internal CAF::core)
+
+add_executable(mrequest mrequest.cpp)
+target_link_libraries(mrequest PRIVATE CAF::internal CAF::core)
