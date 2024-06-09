@@ -7,5 +7,5 @@ FetchContent_DeclareGitHubWithMirror(double-conversion
 
 FetchContent_MakeAvailable(double-conversion)
 
-SET(DOUBLE_CONVERSION_LIBRARY ${double-conversion_SOURCE_DIR}/double-conversion)
-SET(DOUBLE_CONVERSION_INCLUDE_DIR ${double-conversion_SOURCE_DIR}/include)
+SET(DOUBLE_CONVERSION_LIBRARY ${double-conversion_BINARY_DIR})
+SET(DOUBLE_CONVERSION_INCLUDE_DIR ${double-conversion_SOURCE_DIR}/double-conversion)

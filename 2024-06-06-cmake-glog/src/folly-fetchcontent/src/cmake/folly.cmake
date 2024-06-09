@@ -1,11 +1,11 @@
 include_guard()
 
+include(FetchContent)
 
 FetchContent_Declare(
   folly
   GIT_REPOSITORY https://github.com/facebook/folly.git
-  GIT_TAG main
+  GIT_TAG v2022.06.20.00
 )
 
-
-FetchContent_MakeAvailableWithArgs(folly)
+FetchContent_MakeAvailable(folly)
