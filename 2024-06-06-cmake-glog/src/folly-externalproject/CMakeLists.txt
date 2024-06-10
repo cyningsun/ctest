@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 
 project(boost-externalproj LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -20,16 +20,19 @@ ExternalProject_Add(${PROJECT_NAME}
   SOURCE_DIR
     ${CMAKE_CURRENT_LIST_DIR}/src
   CMAKE_ARGS
-    -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+    -Dfmt_DIR=${fmt_external_ROOT}/lib/cmake/fmt 
+    -Dfolly_DIR=${folly_external_ROOT}/lib/cmake/folly 
+    -DBOOST_ROOT=${boost_external_ROOT}
+    #-DCMAKE_PREFIX_PATH=${fmt_external_ROOT}/lib/cmake/fmt
     -DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}
     -DCMAKE_CXX_EXTENSIONS=${CMAKE_CXX_EXTENSIONS}
     -DCMAKE_CXX_STANDARD_REQUIRED=${CMAKE_CXX_STANDARD_REQUIRED}
   CMAKE_CACHE_ARGS
     -DCMAKE_CXX_FLAGS:STRING=${CMAKE_CXX_FLAGS}
-    -DCMAKE_INCLUDE_PATH:PATH=${folly_external_INCLUDEDIR}
-    -DCMAKE_LIBRARY_PATH:PATH=${folly_external_LIBRARYDIR}
+    -DCMAKE_INCLUDE_PATH:PATH=${folly_external_INCLUDEDIR}:${gflags_external_INCLUDEDIR}
+    -DCMAKE_LIBRARY_PATH:PATH=${folly_external_LIBRARYDIR}:${gflags_external_LIBRARYDIR}
   BUILD_ALWAYS
     1
   INSTALL_COMMAND
     ""
-  )
+)
